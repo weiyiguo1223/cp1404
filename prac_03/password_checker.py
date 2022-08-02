@@ -5,7 +5,7 @@ Password checker built from "skeleton" code to help you get started
 
 MIN_LENGTH = 2
 MAX_LENGTH = 6
-SPECIAL_CHARS_REQUIRED = True
+SPECIAL_CHARS_REQUIRED = False
 SPECIAL_CHARACTERS = "!@#$%^&*()_-=+`~,./'[]<>?{}|\\"
 
 
@@ -17,14 +17,19 @@ def main():
     print("\t1 or more uppercase characters")
     print("\t1 or more lowercase characters")
     print("\t1 or more numbers")
+    password = get_password()
+    print("Your " + str(
+        len(password)) + " character password is valid: " + password)
+    print_asterisks(password)
+
+def get_password():
     if SPECIAL_CHARS_REQUIRED:
         print("\tand 1 or more special characters: ", SPECIAL_CHARACTERS)
     password = input("> ")
     while not is_valid_password(password):
         print("Invalid password!")
         password = input("> ")
-    print("Your " + str(
-        len(password)) + " character password is valid: " + password)
+    return password
 
 
 def is_valid_password(password):
@@ -61,5 +66,9 @@ def is_valid_password(password):
     # if we get here (without returning False), then the password must be valid
     return True
 
+
+def print_asterisks(sequence):
+    "Print as many asterisks in the password."
+    print("*"*len(sequence))
 
 main()
