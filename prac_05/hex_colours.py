@@ -17,4 +17,3 @@ while color_name != "":
     else:
         print("Invalid color name")
     color_name = input("Enter a color name: ")
-
