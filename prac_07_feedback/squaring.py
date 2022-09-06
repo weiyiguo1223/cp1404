@@ -25,6 +25,4 @@ class SquareNumberApp(App):
             pass
 
 
-
-
 SquareNumberApp().run()
