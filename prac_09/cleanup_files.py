@@ -38,7 +38,25 @@ def main():
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
+    space_preceding = False
+    bracket_preceding = False
+    for letter in filename:
+        if letter.isspace() or letter == "_":
+            space_preceding = True
+            new_name = new_name + "_"
+        elif letter == "(":
+            bracket_preceding = True
+        elif letter.isupper():
+            if new_name != "" and not space_preceding and not bracket_preceding:
+                new_name = new_name + "_"
+        if not (letter.isspace() or letter == "_"):
+            if space_preceding:
+                letter = letter.upper()
+                space_preceding = False
+            new_name = new_name + letter
+
     return new_name
+
 
 
 def demo_walk():
